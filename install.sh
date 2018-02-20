@@ -15,8 +15,26 @@ then
     # Update sources
     sudo xbps-install -Syu
 
-    # Install Reqired packages
-    sudo xbps-install -S xorg xterm xclip curl git cmake python3 python3-pip neovim rxvt-unicode zsh i3 i3lock i3status dunst dmenu firefox font-awesome
+    # Install reqired packages
+    sudo xbps-install -S xorg xterm xclip curl git cmake python3 python3-pip neovim rxvt-unicode zsh i3 i3lock i3status dunst dmenu ranger udiskie NetworkManager network-manager-applet inetutils-ifconfig gnome-keyring socklog-void firefox alsa-utils pulseaudio font-awesome
+    
+    # Copy ranger config files
+    ranger --copy-config=all
+
+    # Set up Network Manager
+    sudo rm -fr /var/service/dhcpcd
+    sudo rm -fr /var/service/wpa_supplicant
+    sudo ln -s /etc/sv/NetworkManager /var/service
+    sudo ln -s /etc/sv/dbus /var/service
+
+    # Set up logger
+    sudo ln -s /etc/sv/socklog-unix /var/service/ 
+    sudo ln -s /etc/sv/nanoklogd /var/service/
+
+    # Set up audio
+    sudo ln -s /etc/sv/alsa /var/service/ 
+    sudo ln -s /etc/sv/cgmanager /var/service/
+    sudo ln -s /etc/sv/consolekit /var/service/
 fi
 
 #### ZSH ####
