@@ -16,7 +16,7 @@ then
     sudo xbps-install -Syu
 
     # Install reqired packages
-    sudo xbps-install -S xorg xterm xclip curl git cmake python3 python3-pip neovim rxvt-unicode zsh i3 i3lock i3status dunst dmenu ranger udiskie NetworkManager network-manager-applet inetutils-ifconfig gnome-keyring socklog-void firefox alsa-utils pulseaudio font-awesome
+    sudo xbps-install -S xorg xterm xclip curl zip git cmake python3 python3-pip neovim rxvt-unicode zsh i3 i3lock i3status dunst dmenu ranger udiskie NetworkManager network-manager-applet inetutils-ifconfig gnome-keyring socklog-void firefox alsa-utils pulseaudio redshift font-awesome
     
     # Copy ranger config files
     ranger --copy-config=all
