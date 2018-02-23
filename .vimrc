@@ -1,15 +1,10 @@
-" This line should not be removed as it ensures that various options are
-" properly set to work with the Vim-related packages.
-runtime! archlinux.vim
-
-" If you prefer the old-style vim functionalty, add 'runtime! vimrc_example.vim'
-" Or better yet, read /usr/share/vim/vim80/vimrc_example.vim or the vim manual
-" and configure vim to your own liking!
-
-" do not load defaults if ~/.vimrc is missing
-"let skip_defaults_vim=1
-syntax on
+" Disable Vi emulation
 set nocompatible
+
+" Pathogen Plugin Manager
+execute pathogen#infect()
+
+syntax on
 filetype indent plugin on
 
 " One such option is the 'hidden' option, which allows you to re-use the same
@@ -82,7 +77,8 @@ set notimeout ttimeout ttimeoutlen=200
  
 " Use <F11> to toggle between 'paste' and 'nopaste'
 set pastetoggle=<F11>
-
+set clipboard=unnamedplus
+map <F2> :NERDTreeToggle<CR>
  
 " Indentation settings for using 4 spaces instead of tabs.
 " Do not change 'tabstop' from its default value of 8 with this setup.

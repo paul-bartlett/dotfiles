@@ -16,7 +16,7 @@ then
     sudo xbps-install -Syu
 
     # Install reqired packages
-    sudo xbps-install -S xorg xterm xclip curl zip git cmake python3 python3-pip neovim rxvt-unicode zsh i3 i3lock i3status dunst dmenu ranger udiskie NetworkManager network-manager-applet inetutils-ifconfig gnome-keyring socklog-void firefox alsa-utils pulseaudio redshift font-awesome
+    sudo xbps-install -S xorg xterm xclip curl zip git cmake base-devel python-devel python3 python3-pip python3-devel neovim rxvt-unicode zsh i3 i3lock i3status dunst dmenu ranger udiskie NetworkManager network-manager-applet inetutils-ifconfig gnome-keyring socklog-void firefox alsa-utils pulseaudio redshift font-awesome
     
     # Copy ranger config files
     ranger --copy-config=all
@@ -85,4 +85,30 @@ then
     sudo chsh -s /bin/zsh
 
     echo "Zsh install done."
+fi
+
+#### VIM PLUGINS ####
+
+read -p "Do you want to install Vim configuration, plugins and themes? [y/n] " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+    # Pathogen Vim
+    mkdir -p ~/.vim/autoload ~/.vim/bundle
+    curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+
+    # NERDTree
+    git clone https://github.com/scrooloose/nerdtree.git ~/.vim/bundle/nerdtree
+
+    # YouCompleteMe
+    read -p "Do you want to install YouCompleteMe for Vim? (Requires Vim 8.0 with Python support, check with vim --version) [y/n] " -n 1 -r
+    echo
+    if [[ $REPLY =~ ^[Yy]$ ]]
+    then
+        cd ~/.vim/bundle
+        git clone https://github.com/Valloric/YouCompleteMe.git
+        cd YouCompleteMe
+        git submodule update --init --recursive
+        ./install.py --clang-completer
+    fi
 fi
