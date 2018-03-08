@@ -8,7 +8,7 @@ which sudo &>/dev/null
 
 #### XBPS ####
 
-read -p "Do you want to install required packages via xbps? [y/n] " -n 1 -r
+read -p "Do you want to install all packages via xbps? [y/n] " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
@@ -16,7 +16,7 @@ then
     sudo xbps-install -Syu
 
     # Install reqired packages
-    sudo xbps-install -S xorg xterm xclip curl zip git cmake base-devel python-devel python3 python3-pip python3-devel neovim rxvt-unicode zsh i3 i3lock i3status dunst dmenu ranger udiskie NetworkManager network-manager-applet inetutils-ifconfig gnome-keyring socklog-void firefox alsa-utils pulseaudio redshift font-awesome
+    sudo xbps-install -S xorg xterm xclip curl zip git cmake base-devel python-devel python3 python3-pip python3-devel neovim rxvt-unicode zsh i3 i3lock i3status dunst dmenu ranger udiskie NetworkManager network-manager-applet inetutils-ifconfig gnome-keyring socklog-void firefox gst-libav alsa-utils pulseaudio redshift font-awesome
     
     # Copy ranger config files
     ranger --copy-config=all
